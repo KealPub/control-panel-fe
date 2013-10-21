@@ -3,12 +3,14 @@ define([
 	'view/HomeView',
 	'view/LoginView',
 	'models/user'
-], function(Backbone, HomeView, LoginView, User){
+	'view/ConsoleView'
+], function(Backbone, HomeView, LoginView, User, ConsoleView){
 
 	var AppRouter = Backbone.Router.extend({
 		routes: {
 			'!/login': 'showLogin',
 			'!/logout': 'logout',
+			'!/console': 'showConsole',
 
 			'*actions': 'defaultAction'
 		}
@@ -28,9 +30,15 @@ define([
 			home.render();
 		});
 
+
 		app_router.on('route:logout', function(){
 			User.logout();
 			Backbone.history.navigate('#!/login', true);
+		});
+
+		app_router.on('route:showConsole', function(){
+			var list = new ConsoleView();
+			list.render();
 		});
 
 		Backbone.history.start();

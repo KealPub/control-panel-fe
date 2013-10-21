@@ -1,0 +1,3 @@
+<div class="console-list-message color-<%= color %> level-<%= level %>">
+	<% if(time) { %> <span class="console-list-date"><%= new Date(time).toFormat("H:i:s") %></span> <span class="console-list-level"><%= level %>:</span> <span class="console-list-msg"><%=msg %></span> <% } %>
+</div>

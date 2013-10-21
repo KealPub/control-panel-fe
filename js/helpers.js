@@ -1,7 +1,10 @@
 define([
 	'jquery',
-	'underscore'
-], function($,_){
+	'underscore',
+	'resource/ext/md5',
+	'resource/ext/utf8_encode',
+	'resource/ext/date'
+], function($,_, md5, utf8_encode, date){
 	return {
 
 		formToObject: function(form){
@@ -12,7 +15,13 @@ define([
 			});
 
 			return _obj;
-		}
+		},
+
+		md5: md5,
+
+		utf8_encode: utf8_encode,
+
+		date: date
 
 	}
 })
