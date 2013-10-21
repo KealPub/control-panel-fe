@@ -19,16 +19,14 @@ define([
 
 		errorMsg: "Неправильный логин или пароль",
 
+		template: loginTemplate,
+
 		beforeRender: function(){
 			if(User.isAutorization()) {
 				Backbone.history.navigate('', true);
 				return false;
 			}
 			return true; 
-		},
-
-		render: function(){
-			this.$el.html(loginTemplate);
 		},
 
 		login: function(){

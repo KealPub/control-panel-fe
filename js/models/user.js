@@ -29,6 +29,7 @@ define([
 				login: login,
 				password: pass
 			}, function(data){
+
 				try{
 					data = JSON.parse(data);
 				}
@@ -52,6 +53,9 @@ define([
 		logout: function(){
 			this.set('access_token', null);
 			this.set('user_id', null);
+
+			$.removeCookie('access_token');
+			$.removeCookie('user_id');
 		}
 
 

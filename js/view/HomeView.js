@@ -5,9 +5,7 @@ define([
 ], function(Backbone, MainView, homeTemplate){
 	return MainView.extend({
 
-		render: function(){
-			this.$el.html(homeTemplate);
-		}
+		template: homeTemplate
 
 	});
 });
