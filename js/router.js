@@ -2,7 +2,7 @@ define([
 	'backbone',
 	'view/HomeView',
 	'view/LoginView',
-	'models/user'
+	'models/user',
 	'view/ConsoleView'
 ], function(Backbone, HomeView, LoginView, User, ConsoleView){
 

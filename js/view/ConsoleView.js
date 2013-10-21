@@ -7,8 +7,10 @@ define([
     'backbone',
     'resource/MainView',
     'text!templates/ConsoleTemplate.html',
-    'view/widget/console/List'
-], function($, _, Backbone, PageView, ConsoleMessageTemplate, ListView){
+    'view/widget/console/List',
+    'view/widget/Sidebar/Sidebar',
+    'view/widget/Sidebar/widget/menu'
+], function($, _, Backbone, PageView, ConsoleMessageTemplate, ListView, Sidebar, MenuSidebarWidget){
 	return PageView.extend({
 
 		template: _.template(ConsoleMessageTemplate),
@@ -20,6 +22,15 @@ define([
 		afterRender: function(){
 			var list = new ListView();
 			list.render();
+
+			var sidebar = new Sidebar();
+			sidebar.add(new MenuSidebarWidget([
+				{
+					name: "home",
+					link: "#"
+				}
+			]));
+			sidebar.render();
 		} 
 	});
 });
