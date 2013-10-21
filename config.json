@@ -1,0 +1,27 @@
+{
+    "servers":[
+        {
+            "name":"5ый",
+            "host":"192.168.0.5",
+            "port":3000,
+            "path":"/resolve",
+            "status": true
+        },
+
+        {
+            "name":"21ый",
+            "host":"192.168.0.21",
+            "port":3000,
+            "path":"/resolve",
+            "status": true
+        },
+
+        {
+            "name":"31ый",
+            "host":"192.168.0.31",
+            "port":3000,
+            "path":"/resolve",
+            "status": true
+        }
+    ]
+}
