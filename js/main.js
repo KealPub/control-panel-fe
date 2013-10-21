@@ -5,9 +5,13 @@ require.config({
 		backbone: 'lib/backbone',
 		cookie: 'lib/jquery.cookie',
 		bootstrap: 'bootstrap',
-		templates: '../templates'
+		templates: '../templates',
+		socketio: '../socket.io/socket.io'
 	},
 	shim: {
+		socketio: {
+	    	exports: 'io'
+	    },
 	    underscore: {
 	      exports: '_'
 	    },
@@ -23,6 +27,7 @@ require.config({
 	    	deps: ["jquery"],
 	    	exports: "$"
 	    }
+
   	}
 });
 
