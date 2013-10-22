@@ -56,8 +56,7 @@ define([
 			this.render = _.wrap(this.render, function(render){
 
 				if(!this.beforeRender()) return;
-				render.apply(this);
-				this.afterRender();
+				render.call(this, this.afterRender);
 			});
 		},
 
@@ -67,6 +66,7 @@ define([
 			window.currentView = this;
 				
 			if(!this.accessGuest && !User.isAutorization()){
+				window.back_url = location.hash;
 				Backbone.history.navigate(this.loginUrl, {trigger: true, replace: true});
 				return false;
 			}
@@ -75,16 +75,17 @@ define([
 			return true;			
 		},
 
-		render: function(){
+		render: function(callback){
 
 			if(window.createPage) {
 				window.createPage = false;
 				this.$el.html(this.template);
+				callback();
 			}
-			else this.animateNavigate();
+			else this.animateNavigate(callback);
 		},
 
-		animateNavigate: function(){
+		animateNavigate: function(callback){
 			var slide1 = this.$el.html();
 			var slide2 = this.template;
 
@@ -99,6 +100,7 @@ define([
 			this.animate(this.animateMethod, function(){
 				$('#securityBlock').hide();
 				_then.$el.html(slide2);
+				callback();
 			});
 		},
 

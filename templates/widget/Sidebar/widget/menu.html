@@ -1,0 +1,7 @@
+<div id="sidebar-menu">
+	<ul class="nav nav-pills nav-stacked">
+		<% _.each(menu, function(item){ %>
+			<li><a href="<%= item.link %>"><%=item.name %></a></li>
+		<%});%>
+	</ul>
+</div>

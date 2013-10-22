@@ -37,7 +37,13 @@ define([
 
 			User.login(form.login, form.password, function(err, data){
 				if(err)  _then.showMessage(_then.errorMsg);
-				else     Backbone.history.navigate('#', true);
+				else{
+					if(window.back_url) {
+						Backbone.history.navigate(window.back_url, true);
+						window.back_url = undefined;
+					}
+					else  Backbone.history.navigate('#', true);
+				}   
 			});
 		},
 

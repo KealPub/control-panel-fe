@@ -15,13 +15,21 @@ define([
 		template: _.template(MessageTemplate),
 
 		addOne: function(model){
-			 this.$el.append(this.template(model.toJSON()));
+			if(!model.get('time')) return;
+		 	
+		 	var scrolling;
+		 	if((this.$el.scrollTop() + this.$el.height()) == this.$el[0].scrollHeight) scrolling = true;
+
+		 	this.$el.append(this.template(model.toJSON()));
+
+		 	if(scrolling)
+		 	this.$el.animate({scrollTop: this.$el[0].scrollHeight}, 300);
 		},
 
 		addAll: function(){
 			var _then = this;
 
-			this.collection.each(function(item){
+			this.collection.forEach(function(item){
 				_then.addOne(item);
 			});
 		},

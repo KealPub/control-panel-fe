@@ -13,15 +13,9 @@ define([
 ], function($, _, Backbone, PageView, ConsoleMessageTemplate, ListView, Sidebar, MenuSidebarWidget){
 	return PageView.extend({
 
-		template: _.template(ConsoleMessageTemplate),
-
-		render: function(){
-			this.$el.html(this.template());
-		},
+		template: _.template(ConsoleMessageTemplate, {}),
 
 		afterRender: function(){
-			var list = new ListView();
-			list.render();
 
 			var sidebar = new Sidebar();
 			sidebar.add(new MenuSidebarWidget([
@@ -31,6 +25,11 @@ define([
 				}
 			]));
 			sidebar.render();
+
+			var list = new ListView();
+			list.render();
+
+			
 		} 
 	});
 });
