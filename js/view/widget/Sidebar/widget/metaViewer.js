@@ -17,7 +17,7 @@ define([
 		showMeta: function(model){
 
 			if(model.get('meta'))
-				$('#'+ this.name + ' pre').html(model.get('meta'));
+				$('#'+ this.name + ' pre').html(JSON.stringify(model.get('meta'), undefined, 2));
 			else 
 				$('#'+ this.name + ' pre').html('No meta');
 		},
