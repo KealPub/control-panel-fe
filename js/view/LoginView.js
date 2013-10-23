@@ -22,6 +22,8 @@ define([
 		template: loginTemplate,
 
 		beforeRender: function(){
+			window.currentView = this;
+
 			if(User.isAutorization()) {
 				Backbone.history.navigate('', true);
 				return false;
@@ -30,7 +32,6 @@ define([
 		},
 
 		login: function(){
-			console.log('test');
 			var form = helpers.formToObject(this.$(loginForm));
 			
 			var _then = this;

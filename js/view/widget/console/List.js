@@ -10,6 +10,10 @@ define([
 
 		collection: ConsoleMessage,
 
+		events: {
+			'click .console-list-message': 'showExtendedInfo'
+		},
+
 		el: '#console',
 
 		template: _.template(MessageTemplate),
@@ -20,7 +24,9 @@ define([
 		 	var scrolling;
 		 	if((this.$el.scrollTop() + this.$el.height()) == this.$el[0].scrollHeight) scrolling = true;
 
-		 	this.$el.append(this.template(model.toJSON()));
+		 	var modelView = _.extend(model.toJSON(), {id: model.cid});
+
+		 	this.$el.append(this.template(modelView));
 
 		 	if(scrolling)
 		 	this.$el.animate({scrollTop: this.$el[0].scrollHeight}, 300);
@@ -44,6 +50,18 @@ define([
 		render: function(){
 			this.bindCollectionEvent();
 			this.addAll();
+		},
+
+		//========= Events
+
+
+		showExtendedInfo: function(e){
+			var message = e.currentTarget;
+
+			var model = this.collection.get($(message).attr('data-id'));
+
+			Backbone.Events.trigger('console_message_click', model);
+
 		}
 
 	});

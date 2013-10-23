@@ -62,7 +62,6 @@ define([
 
 		beforeRender: function(){
 
-			if(window.currentView) window.currentView.undelegateEvents();
 			window.currentView = this;
 				
 			if(!this.accessGuest && !User.isAutorization()){
@@ -91,8 +90,6 @@ define([
 
 			var html = _.template(slideTemplate, {slide1: slide1, slide2: slide2});
 
-			console.log(slideTemplate);
-
 			this.$el.html(html);
 
 			var _then = this;
@@ -110,6 +107,14 @@ define([
 
 		afterRender: function(){
 			return true;
+		},
+
+		closePage: function(fragments){
+			this._closePage();
+		},
+
+		_closePage: function(){
+			this.undelegateEvents();
 		}
 	});
 });

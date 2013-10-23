@@ -9,8 +9,9 @@ define([
     'text!templates/ConsoleTemplate.html',
     'view/widget/console/List',
     'view/widget/Sidebar/Sidebar',
-    'view/widget/Sidebar/widget/menu'
-], function($, _, Backbone, PageView, ConsoleMessageTemplate, ListView, Sidebar, MenuSidebarWidget){
+    'view/widget/Sidebar/widget/menu',
+    'view/widget/Sidebar/widget/metaViewer'
+], function($, _, Backbone, PageView, ConsoleMessageTemplate, ListView, Sidebar, MenuSidebarWidget, metaViewer){
 	return PageView.extend({
 
 		template: _.template(ConsoleMessageTemplate, {}),
@@ -24,12 +25,19 @@ define([
 					link: "#"
 				}
 			]));
+
+			sidebar.add(new metaViewer());
+
 			sidebar.render();
 
 			var list = new ListView();
 			list.render();
 
 			
+		},
+
+		closePage: function(){
+			console.log(1111);
 		} 
 	});
 });
