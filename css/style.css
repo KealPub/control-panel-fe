@@ -90,3 +90,11 @@ body {
 	height: 400px;
 	white-space: pre;
 }
+
+#notification {
+    position: absolute;
+    bottom: 0;
+    right: 1;
+    width: 40%;
+}
+

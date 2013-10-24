@@ -33,7 +33,6 @@ define([
 			var list = new ListView();
 			list.render();
 
-			
 		},
 
 		closePage: function(){
